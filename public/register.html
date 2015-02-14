@@ -1,0 +1,25 @@
+<html>
+<head>
+<meta content='html/text' charset='utf-8' />
+<link rel='stylesheet' type='text/css' href='style.css'/>
+<title>Register</title>
+</head>
+<body>
+<div id='title'>
+PictureSite
+</div>
+<form id='login' method = 'POST' action='/createUser'>
+<fieldset>
+	<legend>Register</legend>
+<label for='username'> Username: <input name='username' type='text' /></label><br>
+<label for='password'> Password: <input type='password' name = 'password'></label><br>
+<label for='rPassword'> Repeat Password: <input type='password' name = 'rPassword'></label><br>
+<label for='email'> Email: <input type='mail' name = 'email'></label><br>
+<input id='loginButton' type='submit' value='Register'>
+<div id='registerLink'>
+<a href='/login' style="float:right"> Login </a>
+</fieldset>
+</div>
+</form>
+</body>
+</html>

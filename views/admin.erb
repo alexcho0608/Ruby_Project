@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta content='html/text' charset='utf-8' />
+<link rel='stylesheet' type='text/css' href='/style.css'/>
+<title>Main</title>
+</head>
+<body>
+<div id='title'>
+	PictureSite
+</div>
+<div class='logout'>
+<a href='/logout' > Logout </a>
+</div>
+	<table class='main'>
+	<% @userList.each do |row| 
+		path = '/removeUser/' + row.username
+		upgrade = '/upgradeUser' + row.username
+		%>
+		<tr>
+		<td>
+		<%= row.username %>
+		</td>
+		<td>
+		<a href=<%= path %> class='submit'>Remove </a>
+		</td>
+		<td>
+		<a href=<%= upgrade %> class='submit'>Make admin </a>
+		</td>
+		<%end %>
+		</tr>
+	</table>
+</body>
+</html>

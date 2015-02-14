@@ -1,0 +1,98 @@
+input.logintext,input.loginpassword {
+width:375px;
+display:block;
+border: 1px solid #999;
+height: 25px;
+-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+
+table.main{
+	width:100%;
+	min-height: 700px;
+	max-height:1100px;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+tr,td{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+td.friends,td.importPicture{
+	height:200;
+}
+.search td{
+	height: 110;
+}
+#title{
+	margin-left: 19em;
+	font-style: italic;
+	font-size: 2em;
+	display: inline-block;
+}
+form#login{
+	margin-left:32em;
+	margin-top:10em;
+	width:15em;
+}
+img{
+	margin:10px;
+}
+ul.comments{
+width: 100%;
+
+}
+.wrapperImg{
+	min-height: 500px;
+	max-width: 200px;
+}
+.logout{
+	margin-left: 25em;
+	text-align: right;
+	display: inline-block;
+	background-color: green;
+}
+.logout a{
+	text-decoration: none;
+	color:blue;
+	font-weight: bold;
+	font-size:1.7em;
+}
+div.friendList
+{
+	height:100%;
+}
+div.importPicture{
+	height:100%;
+}
+ul.friendList{
+	overflow:hidden;
+    overflow-y:scroll;
+    width:80%;
+}
+a.invite,a.submit {
+    text-decoration: none; font: menu;
+    display: inline-block; padding: 2px 8px ;
+    margin: 2px;
+    background: green; color: black;
+    font-weight: bold;
+    border-style: solid; border-width: 2px;
+    border-color: ButtonHighlight ButtonShadow ButtonShadow ButtonHighlight;
+}
+a.invite:active,a.submit:active {
+    border-color: ButtonShadow ButtonHighlight ButtonHighlight ButtonShadow;
+}
+a.userLink{
+  text-decoration: none;
+  font-family: "Times New Roman", Georgia, Serif;	
+  font-weight: bold;
+}
+a.userLink:active,a.userLink:visited{
+	color: blue;
+}
+ul{height:100px; width:18%;}
+ul{overflow:hidden; overflow-y:scroll;}
+tr.search{
+	max-height:100px;
+}

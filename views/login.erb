@@ -1,0 +1,26 @@
+<html>
+<head>
+<meta content='html/text' charset='utf-8' />
+<link rel='stylesheet' type='text/css' href='/style.css'/>
+<title>Login</title>
+</head>
+<body>
+<div id='title'>
+	PictureSite
+</div>
+<form id='login' method = 'POST' action='/main'>
+<fieldset>
+<legend>Login form</legend>
+<% if @not_found %>
+	Username or password incorrect!<br>
+<% end %>
+<label for='username'> Username: <input name='username' class='logintext' type='text' /></label><br>
+<label for='password'> Password: <input type='password' class='loginpassword' name = 'password'></label><br>
+<input class='loginButton' type='submit' value='Login'>
+<div id='registerLink'>
+<a href='/register' style="float:right"> Register </a>
+</div>
+</fieldset>
+</form>
+</body>
+</html>

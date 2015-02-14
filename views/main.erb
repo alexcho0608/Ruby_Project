@@ -1,0 +1,112 @@
+<html>
+<head>
+<meta content='html/text' charset='utf-8' />
+<link rel='stylesheet' type='text/css' href='/style.css'/>
+<title>Main</title>
+</head>
+<body>
+  <div id='title'>
+    PictureSite
+  </div>
+  <div class='logout'>
+    <a href='/logout' > Logout </a>
+  </div>
+  <table class='main'>
+    <tr class='search'>
+	  <td colspan=2 style="width:150px">
+	    <h1 class='greeting'>Greetings <%= session[:username] %> !</h1><br>
+		  <div class='searchForm'>
+		    <form action='/query' method='get'>
+			  <label for='searchUser'> Search name: <input type='text' name='searchUser'/> <input type='submit' value='Search'/>
+			</form>
+		  </div>
+		  <ul>
+		    <%if @queryList
+			    @queryList.each do |user| 
+				  html = user.username + " <a href='/request/#{user.id}' class='invite'> Invite</a>"%>
+		    <li> <%=html %></li>
+			  <%end
+			  end %>
+		  </ul>
+	  </td>
+	</tr>
+	<tr>
+	  <td class='main' width='80%' style="top:0;left:0" rowspan='2'>
+	    <div class='wrapperImg' style = "display:inline">
+		<% if not @imageList.nil?
+		     @imageList.each do |element| 
+			   path = "/image/" + @name + "/" + element.name
+			   img_id = element.id
+		%>
+		<div style="display:inline-block;">
+		  <img src=<%= path %> alt="No image" height="200" width="200" border=2>
+			<form action='/message' method = 'get'>
+               <textarea rows="4" name='content' cols="30">
+               </textarea><br>
+               <input type='hidden' name='id' value=<%= img_id %> />
+			   <input type='submit' value='Send'/>
+			</form>
+			<ul class='comments'>
+			<% 
+			   msgList = Messages.where("image_id=?", img_id)
+			   msgList = [] unless msgList
+			   msgList.each do |row| 
+			   msg = row.user_name + ":" + row.date + ":" + row.content + "\n"
+               %>
+              <li><%= msg %> </li>
+            <% end %>
+            </ul>
+        </div>
+			<% end 
+			   end %>
+		</div>
+	  </td>
+	  <td class='friends'>
+	    <div class='friendList'>
+		  <h1> Friends List </h1>
+		    <% unless @friendList.nil? %>
+			  <ul class='friendlist'>
+			  <li><a href='/main'>Me</a></li>
+			  <% @friendList.each do |elem|
+				   	user = "<a href='/friend/#{elem[1].username}' class='userLink' >#{elem[1].username}</a>"
+				   	id = elem[1].id
+				   	action = ""
+				   	button = ""
+				   	case elem[0].status
+				   	when 1 
+				   		action = "Remove"
+				   	when 2
+				   		action = "Accept"
+				   	else
+				   		action = "Waiting"
+				   	end
+				   	unless action == "Waiting"
+				   		button = " <a href='/#{action.downcase}/#{id}' class='submit' >#{action}</a>"
+				   	else
+				   		button = " Waiting"
+				   	end
+				   	if action == "Accept"
+				   		deny = "<a href='/remove/#{id}' class='submit'> Deny </a>"
+				   	end
+				%>
+				<li> <%= user %> <%= button %> <%= deny %></li>
+				<% end %>
+				</ul>
+				<% end %>
+				</div>
+			</td>
+	</tr>
+	<tr>
+	  <td class='importPicture'>
+	    <div class='importPicture'>
+		  <h1>Import a picture</h1>
+		  <form method='post' action='/uploadImage' enctype="multipart/form-data">
+		  <input name='myfile' type='file'/>
+		  <input type='submit' value='Import'>
+		  </form>
+		</div>
+	  </td>
+	</tr>
+  </table>
+</body>
+</html>
